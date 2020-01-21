@@ -76,6 +76,7 @@ def loadSettingsFile(filename):
         settings['allow_link'] = config.getboolean('facebook', 'link')
         settings['allow_shared'] = config.getboolean('facebook', 'shared')
         settings['allow_message'] = config.getboolean('facebook', 'message')
+        settings['filter'] = config.get('facebook', 'filter');
         settings['telegram_token'] = config.get('telegram', 'token')
         settings['channel_id'] = config.get('telegram', 'channel')
         settings['admin_id'] = config.get('telegram', 'admin')
@@ -440,7 +441,7 @@ def checkIfAllowedAndPost(post, bot, chat_id):
         post_message = ''
 
     #filter for post.
-    if(post_message != '#importantfff'):
+    if(post_message != settings['filter']):
         return
     
     #Telegram doesn't allow media captions with more than 200 characters
