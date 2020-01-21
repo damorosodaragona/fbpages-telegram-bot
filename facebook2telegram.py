@@ -439,6 +439,10 @@ def checkIfAllowedAndPost(post, bot, chat_id):
     else:
         post_message = ''
 
+    #filter for post.
+    if(post_message != '#importantfff'):
+        return
+    
     #Telegram doesn't allow media captions with more than 200 characters
     #Send separate message with the post's message
     if (len(post_message) > 200) and \
